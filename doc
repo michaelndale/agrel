@@ -1,0 +1,16 @@
+ @if(session()->has('success'))
+                            <div class= "alert alert-success" role= "alert">
+                                {{ Session::get('success') }}
+                            </div>
+                          
+                        </script>
+                      
+                        @elseif(session()->has('failed'))
+                            <div class= "alert alert-danger" role= "alert">
+                                {{ Session::get('failed') }}
+                            </div>
+                        @elseif(session()->has('info'))
+                             <div class= "alert alert-danger" role= "alert">
+                                {{ Session::get('indo') }}
+                            </div>
+                        @endif
