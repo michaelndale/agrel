@@ -20,22 +20,17 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-home"></i> Accueil</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="index.php?action=home" class="dropdown-item"><i class="fas fa-home"></i> Bienvenu </a></li>
+              <li><a href="{{ route('bienvenu') }}" class="dropdown-item"><i class="fas fa-home"></i> Bienvenu </a></li>
               <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=diaporament" class="dropdown-item"> <i class="fas fa-hippo"></i> Diaporament Elevage </a></li>
+            <!--  <li><a href="{{ route('rapport')}}" class="dropdown-item"> <i class="fas fa-hippo"></i> Diaporament Elevage </a></li>
               <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=diaporament_agriculture" class="dropdown-item"> <i class="fab fa-pagelines"></i> Diaporament Agriculture </a></li>
+              <li><a href="{{ route('rapport')}}" class="dropdown-item"> <i class="fab fa-pagelines"></i> Diaporament Agriculture </a></li>
+
+              <li class="dropdown-divider"></li> -->
+              <li><a href="{{ route('rapport')}}" class="dropdown-item"> <i class="far fa-file-alt"></i> Rapport</a></li>
 
               <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=all_recete" class="dropdown-item"> <i class="far fa-file-alt"></i> Rapport recette</a></li>
-
-
-              <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=all_depense" class="dropdown-item"> <i class="far fa-file-alt"></i> Rapport depense </a></li>
-
-            
-              <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=historique" class="dropdown-item"> <i class="far fa-file-alt"></i> Rapport journalier </a></li>
+              <!--<li><a href="{{ route('rapport')}}" class="dropdown-item"> <i class="far fa-file-alt"></i> Journalier </a></li> -->
             </ul>
           </li>
 
@@ -43,28 +38,27 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> 
 
-           
-           
-            <i class="fas fa-hippo"></i> Entrer
+          
+            <i class="fas fa-download"></i>  Entrer
 
             </a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="index.php?action=accueil_site" class="dropdown-item"><i class="fas fa-hippo"></i> Animal</a></li>
+              <li><a href="{{ route('entreranimal') }}" class="dropdown-item"><i class="fas fa-hippo"></i> Animal</a></li>
               <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=medecine" class="dropdown-item"><i class="fas fa-thermometer-half"></i> Produit </a></li>
+              <li><a href="{{ route('entrerstock') }}" class="dropdown-item"><i class=" fab fa-product-hunt  "></i> Produit </a></li>
             </ul>
           </li>
 
 
           
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="fab fa-pagelines"></i> Sortie</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="fas fa-upload"></i> Sortie</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <!-- Level two dropdown-->
 
-              <li><a href="index.php?action=listeculture" class="dropdown-item"><i class="fas fa-file-alt"></i> Animal</a></li>
-              <li class="index.php?action=dropdown-divider"></li>
-              <li><a href="index.php?action=recolte" class="dropdown-item"> <i class=" far fa-file-alt"></i> Produit</a></li>
+              <li><a href="{{ route('sortieanimal') }}" class="dropdown-item"><i class="fas fa-hippo"></i> Animal</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="{{ route('sortiestock') }}" class="dropdown-item"> <i class=" fab fa-product-hunt "></i> Produit</a></li>
             
 
             </ul>
@@ -73,16 +67,31 @@
           </li>
 
 
-          <li class="nav-item">
-            <a href="index.php?action=approvisionnement" class="nav-link"><i class=" fas fa-shopping-cart"></i>  Stock</a>
+           
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> <i class=" fas fa-archive "></i> Stock</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <!-- Level two dropdown-->
+
+              <li><a href="{{ route('compteanimal') }}" class="dropdown-item"><i class="fas fa-hippo"></i> Animal</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="{{ route('stock') }}" class="dropdown-item"> <i class="fab fa-product-hunt"></i> Produit</a></li>
+            
+
+            </ul>
+
+
           </li>
+
+
+         
 
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fab fa-elementor"></i> Dépense</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="index.php?action=charge" class="dropdown-item"><i class="fas fa-file-alt"></i> Générale </a></li>
+              <li><a href="{{ route('depense') }}" class="dropdown-item"><i class="fas fa-file-alt"></i> Générale </a></li>
               <li class="dropdown-divider"></li>
-              <li><a href="index.php?action=salaire" class="dropdown-item"> <i class=" far fa-file-alt"></i> Salaire monsuel</a></li>
+              <li><a href="{{ route('salaire') }}" class="dropdown-item"> <i class=" far fa-file-alt"></i> Salaire monsuel</a></li>
             </ul>
           </li>
 
@@ -94,13 +103,15 @@
 
           
           <li class="nav-item">
-            <a href="index.php?action=credit" class="nav-link"><i class="fas fa-money-check"></i>  Crédit</a>
+            <a href="{{ route('credit') }}" class="nav-link"><i class="fas fa-money-check"></i>  Crédit</a>
           </li>
 
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Paramètre</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{{ route('fournisseur') }}" class="dropdown-item">  <i class="fa fa-users"></i>  Fournisseur </a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="{{ route('fonction') }}" class="dropdown-item">  <i class="fa fa-user-edit"></i>  Fonction</a></li>
               <li class="dropdown-divider"></li>
               <li><a href="{{ route('personnel') }}" class="dropdown-item">  <i class="fa fa-users"></i>  Personnel</a></li>
               <li class="dropdown-divider"></li>
@@ -114,24 +125,15 @@
               <li class="dropdown-submenu dropdown-hover">
                 <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Outils</a>
                 <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                 
-
-                  <li><a href="index.php?action=box" class="dropdown-item">  <i class="fa fa-box"></i> Boite </a></li>
-             
-                  <li><a href="{{ route('fonction') }}" class="dropdown-item">  <i class="fa fa-list"></i> Fonction </a></li>
-                
+                  <li><a href="{{ route('box')}}" class="dropdown-item">  <i class="fa fa-box"></i> Box</a></li>
+            
                   <li><a href="{{ route('site') }}" class="dropdown-item"> <i class="fa fa-globe-americas"></i>  Les sites</a></li>
-                
-                  <li><a href="{{ route('espece') }}" class="dropdown-item">  <i class="fa fa-kiwi-bird"></i> Especes</a></li>
-                
+                  <li><a href="{{ route('espece') }}" class="dropdown-item">  <i class="fas fa-hippo"></i> Especes</a></li>
                   <li><a href="{{ route('bloc') }}" class="dropdown-item"> <i class="fa fa-shoe-prints"></i> Parcelles</a></li>
-                
-                  <li><a href="{{ route('motifplante') }}" class="dropdown-item"> <i class="fa fa-pepper-hot"></i> Motif Plante</a></li>
-                 
-                  <li><a href="{{ route('motifstock') }}" class="dropdown-item"> <i class="fa fa-pepper-hot"></i> Motif Stock</a></li>
-              
-                  <li><a href="{{ route('motifdepense') }}" class="dropdown-item"> <i class="fa fa-pepper-hot"></i> Motif depense</a></li>
-                  
+                  <li><a href="{{ route('motifplante') }}" class="dropdown-item"> <i class="fa fa-edit"></i> Motif Plante</a></li>
+                  <li><a href="{{ route('motifstock') }}" class="dropdown-item"> <i class="fa fa-edit"></i> Motif Stock</a></li>
+                  <li><a href="{{ route('motifdepense') }}" class="dropdown-item"> <i class="fa fa-edit"></i> Motif depense</a></li>
+                  <li><a href="{{ route('statut') }}" class="dropdown-item"> <i class="fa fa-edit"></i> Motif statut</a></li>
                 </ul>
               </li>
               <!-- End Level two -->
@@ -155,7 +157,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-            <a href="index.php?action=historique" class="dropdown-item dropdown-footer">Voir tout l'historique</a>
+            <a href="{{ route('rapport') }}" class="dropdown-item dropdown-footer">Voir tout l'historique</a>
           </div>
         </li>
       

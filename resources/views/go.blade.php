@@ -59,7 +59,7 @@ body{
 <body>
     <div class="box">
         <p class="logo-text ms-2 d-none d-sm-block">
-                    <img src="{{ asset('elements/dist/img/agre-ele.png') }}" title="logo agr-ele" style="margin-left:20px" />
+                    <img src="{{ asset('elements/dist/img/agre-ele.png') }}" title="logo agr-ele" style="margin-left:20px;" />
         </p>
         <div class="y-back">
             <div class="y-inner"></div>

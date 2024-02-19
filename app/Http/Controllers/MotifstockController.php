@@ -31,6 +31,7 @@ class MotifstockController extends Controller
         }else{
             $motif = new Motifstock();
             $motif->libelle= $request->libelle;
+            $motif->unitemesure= $request->unite;
             $motif->save();
                 if ($motif) {
                     return back()->with('success', 'Très bien! motif stock bien enregistrer');

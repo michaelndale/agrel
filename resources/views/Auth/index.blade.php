@@ -29,7 +29,7 @@
                                 @csrf
                                     <div class="form-group">
                                         <label class="control-label" for="username"><i class="fa fa-user"></i> Identifiant</label>
-                                        <input type="text" placeholder="Entrer votre identifiant" title="Entrer votre identifiant" required=""  name="email" id="email" class="form-control">
+                                        <input type="text" placeholder="Identifiant" title="Identifiant" required=""  name="email"  class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="password"><i class=" fas fa-fingerprint"></i> Mot de passse</label>
@@ -43,6 +43,8 @@
                                     </div>-->
                                     <button type="submit" name="seconnecte" class="btn btn-success btn-block"><i class=" fas fa-unlock-alt"></i> Se connecter</button>
                                     <!--<a class="btn btn-default btn-block" href="#">Register</a>  -->
+
+                                    <BR><center><small>Copyright &copy; 2023 - {{ date('Y') }} <BR> V1.2 </small>  </center>
                                 </form>
                         </div>
                     </div>

@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="home">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('bienvenu') }}">Accueil</a></li>
                         <li class="breadcrumb-item active">Motif stock</li>
                     </ol>
                 </div><!-- /.col -->
@@ -37,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th>Libelle</th>
+                                    <th>Unité de mesure</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,8 +45,10 @@
                                 @forelse ($motifData as $key => $value)
                                 <tr>
                                     <td>{{ ucfirst($value->libelle) }} </td>
+                                    <td>{{ ucfirst($value->unitemesure) }} </td>
                                 </tr>
                                 @empty
+                                
 
                                 <tr>
                                     <td colspan="2">
@@ -83,6 +86,12 @@
                             <div class="form-group col-lg-12">
                                 <label for="example-text-input" class="col-form-label">Titre</label>
                                 <input class="form-control" type="text" name="libelle" id="libelle" placeholder="libelle" required>
+                               
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label for="example-text-input" class="col-form-label">Unite de nesure</label>
+                                <input class="form-control" type="text" name="unite" id="unite" placeholder="Unite de nesure" required>
                                
                             </div>
 
