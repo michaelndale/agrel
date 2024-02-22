@@ -14,7 +14,7 @@ class BlocController extends Controller
     public function index()
     {
        
-        $siteData = site::all();
+        $siteData = site::orderBy('libelle', 'ASC')->get();
         return view(
         'bloc.index',
         [
@@ -56,7 +56,9 @@ class BlocController extends Controller
           try 
         {
             $title = $request->libelle;
-            $check = Parcelle::where('parcelle_libelle',$title)->first();
+            $check = Parcelle::where('parcelle_libelle',$title)
+            ->where('blocid',$request->blocid)
+            ->first();
             if($check)
             {
                 return back()->with('failed', 'Le libelle  du parcelle exite');
@@ -104,7 +106,7 @@ class BlocController extends Controller
 
         $check=DB::table('blocs')
         ->where('siteid',$request->id)
-        ->orderBy('id', 'DESC')
+        ->orderBy('id', 'ASC')
         ->get();
         return response()->json($check);
        

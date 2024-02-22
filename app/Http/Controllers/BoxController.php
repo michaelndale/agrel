@@ -7,18 +7,19 @@ use App\Models\Espece;
 use App\Models\site;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BoxController extends Controller
 {
     public function index()
     {
-        $boxData = Box::all();
+        
         $siteData = site::all();
         $spece = Espece::all();
         return view(
         'box.index',
         [
-            'boxData'=> $boxData,
+           
             'siteData'=> $siteData,
             'spece' => $spece
         ]
@@ -30,7 +31,11 @@ class BoxController extends Controller
       try 
     {
         $title = $request->libelle;
-        $check = Box::where('title',$title)->first();
+        $check = Box::where('title',$title)
+                    ->where('blocid',$request->blocid)
+                    ->where('siteid',$request->batiment)
+                    ->where('animalid',$request->spece)
+                    ->first();
         if($check)
         {
             return back()->with('failed', 'Le libelle du box exite');

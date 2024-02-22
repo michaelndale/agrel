@@ -32,37 +32,50 @@
                             </div>
                         </div>
                         <div id="message" class="form-group col-md-6"></div>
-                        @if ($boxData)
+                    
                         <table class="table table-striped table-bordered table-hover" id="myTable">
                             <thead>
                                 <tr>
-                                    <th>Libelle</th>
+                                    <th>Animal</th>
+                                    <th>Box</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @forelse ($boxData as $key => $value)
+                                @forelse ($siteData as $key => $siteDatas)
                                 <tr>
-                                    <td>{{ mb_strtoupper($value->title) }} </td>
+                                    <td style="background-color:antiquewhite" colspan='2'> <b> <center> {{ $siteDatas->libelle }}</center> </b> </td>
+                                        @foreach ($spece as $speces)
+                                        <tr>
+                                            <td> 
+                                                {{ $speces->libelle }}
+                                            </td>
+                                            <td>
+                                    <table>
+                                        @php
+                                            $boxData = DB::table('boxes')     
+                                            ->where('animalid',$speces->id) 
+                                            ->where('siteid',$siteDatas->id) 
+                                            ->orderBy('id', 'ASC')
+                                            ->get();
+                                        @endphp
+                                        @foreach ($boxData as $boxDatas)
+                                        <tr><td>{{ $boxDatas->title }}</td></tr>  
+                                        @endforeach
+                                      
+                                    </table>
+                                    </td>
+                                        </tr> 
+                                        @endforeach
                                 </tr>
                                 @empty
-
                                 <tr>
                                     <td colspan="2">
-
                                         <center>Ceci est vide </center>
-
                                     <td>
-
                                 </tr>
-
                                 @endforelse
-
-
                             </tbody>
                         </table>
-
-                        @endif
                     </div>
                 </div>
             </div>
@@ -94,7 +107,7 @@
                                 <select class="form-control batiment" name="batiment" id="batiment">
                                     <option value=""> Séléctionner le Site</option>
                                     @foreach ($siteData as $siteDatas)
-                                    <option value="{{ $siteDatas->id }}"> {{ $siteDatas->id }} {{ $siteDatas->libelle }}</option>
+                                    <option value="{{ $siteDatas->id }}">  {{ $siteDatas->libelle }}</option>
                                     @endforeach
                                 </select>
 
@@ -117,7 +130,7 @@
                                 <select class="form-control spece" name="spece" id="spece">
                                     <option value=""> Séléctionner le Site</option>
                                     @foreach ($spece as $speces)
-                                    <option value="{{ $speces->id }}"> {{ $speces->id }} {{ $speces->libelle }}</option>
+                                    <option value="{{ $speces->id }}">{{ $speces->libelle }}</option>
                                     @endforeach
                                 </select>
 
