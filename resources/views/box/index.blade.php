@@ -4,7 +4,7 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container">
-            <div class="row mb-2 col-5" style="margin:auto">
+            <div class="row mb-2 col-12" style="margin:auto">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"><small> <i class="fa fa-list"></i> Box </small></h1>
                 </div><!-- /.col -->
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div id="message" class="form-group col-md-12"></div>
-                <div class="col-5" style="margin:auto">
+                <div class="col-12" style="margin:auto">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Box </a> </h3>
@@ -34,39 +34,70 @@
                         <div id="message" class="form-group col-md-6"></div>
                     
                         <table class="table table-striped table-bordered table-hover" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th>Animal</th>
-                                    <th>Box</th>
-                                </tr>
-                            </thead>
+                          
                             <tbody>
                                 @forelse ($siteData as $key => $siteDatas)
-                                <tr>
-                                    <td style="background-color:antiquewhite" colspan='2'> <b> <center> {{ $siteDatas->libelle }}</center> </b> </td>
-                                        @foreach ($spece as $speces)
-                                        <tr>
-                                            <td> 
-                                                {{ $speces->libelle }}
-                                            </td>
-                                            <td>
-                                    <table>
+
+
+
+                                <tr >
+                                    <td  colspan='2' style="background-color:antiquewhite"> <b> <center>  <font color="background-color:antiquewhite">{{ $siteDatas->libelle }} </font> </center> </b> </td>
                                         @php
-                                            $boxData = DB::table('boxes')     
-                                            ->where('animalid',$speces->id) 
+                                            $blocData = DB::table('blocs') 
                                             ->where('siteid',$siteDatas->id) 
                                             ->orderBy('id', 'ASC')
                                             ->get();
                                         @endphp
-                                        @foreach ($boxData as $boxDatas)
-                                        <tr><td>{{ $boxDatas->title }}</td></tr>  
+                                        <table class="table table-striped table-bordered">
+                                        
+                                            @foreach ($blocData as $blocDatas)
+                                            <tr>
+                                             <td colspan="2"> <b>{{ $blocDatas->libelle}}</b></td>
+                                            </tr>
+                                             @foreach ($spece as $speces)
+
+                                             @php
+                                                $boxData = DB::table('boxes')     
+                                                ->where('animalid',$speces->id) 
+                                                ->where('siteid',$siteDatas->id) 
+                                                ->where('blocid',$blocDatas->id) 
+                                                ->orderBy('id', 'ASC')
+                                                ->get();
+                                            @endphp
+                                            <tr>
+                                                        @if($boxData->count() >0 )
+                                                        <td> 
+                                                            {{ $speces->libelle }}
+                                                        </td>
+                                                        <td>
+                                                                <table class="table table-striped table-bordered">
+                                                             
+                                                                <tr>
+                                                                @foreach ($boxData as $boxDatas)
+                                                            
+                                                                <a class="btn btn-app">
+                                                                    <i class="fas fa-box"></i>{{ $boxDatas->title }}
+                                                                    </a>
+                                                                @endforeach
+                                                                </tr>  
+                                                            
+                                                            </table>
+                                                        </td>
+                                                        @endif
+                                            </tr> 
                                         @endforeach
-                                      
-                                    </table>
-                                    </td>
-                                        </tr> 
-                                        @endforeach
+                                             </tr>
+                                            @endforeach
+                                            
+                                        
+                                        </table>
                                 </tr>
+                                       
+
+                                     
+
+
+                              
                                 @empty
                                 <tr>
                                     <td colspan="2">

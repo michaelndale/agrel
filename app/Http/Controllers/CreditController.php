@@ -23,8 +23,8 @@ class CreditController extends Controller
     public function store(Request $request)
     {
         try {
-            $check = $request->montant < $request->montantpayer;
-            if($check)
+           
+            if($request->montant < $request->montantpayer)
             {
                 return back()->with('failed', 'Le montant de l\'avance est superiere a montant a payer ');
             }else{
@@ -44,7 +44,7 @@ class CreditController extends Controller
             }
         }
         } catch (Exception $e) {
-            return back()->with('error', $e);
+             return back()->with('failed', 'Erreur de connexion ');
         }
     }
 

@@ -55,6 +55,8 @@ class SortiestockController extends Controller
 
                 $stock = new Sortiestock();
 
+                $total =  $request->quantite*$request->prixunite;
+
                 $stock->site = $request->site;
                 $stock->motifid = $request->motif;
                 $stock->statutid = $request->statut;
@@ -63,6 +65,7 @@ class SortiestockController extends Controller
                 $stock->date = $request->date;
                 $stock->prixunite = $request->prixunite;
                 $stock->note = $request->note;
+                $stock->total = $total;
 
                 $stock->save();
 
@@ -90,7 +93,7 @@ class SortiestockController extends Controller
                 return back()->with('failed', 'Echec ! Pas de stock dispobible pour cette type de produit ');
             }
         } catch (Exception $e) {
-            return back()->with('error', $e);
+            return back()->with('failed', 'Echec ! Erreur de connexion database');
         }
     }
 

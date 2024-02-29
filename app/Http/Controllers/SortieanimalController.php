@@ -104,7 +104,7 @@ class SortieanimalController extends Controller
             }
        
         } catch (Exception $e) {
-            return back()->with('error', $e);
+            return back()->with('failed', 'Erreur connexion data');
         }
     }
 
