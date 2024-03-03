@@ -95,6 +95,11 @@ class HomeController extends Controller
 
         $elementanimal = Espece::select('id', 'libelle')->distinct()->get();
 
+        $recette_depense = $totalrecette+$totaldepense;
+
+        $pourcentage_recette= round(($totalrecette*100)/$recette_depense);
+        $pourcentage_depense= round(($totalrecette*100)/$recette_depense);
+
 
         return view(
         'home.index',
@@ -121,7 +126,10 @@ class HomeController extends Controller
 
             'elementproduit' => $elementstock,
 
-            'elementanimal' => $elementanimal
+            'elementanimal' => $elementanimal,
+
+            'pourcentage_recette' => $pourcentage_recette,
+            'pourcentage_depense' => $pourcentage_depense
             
         ]
         );

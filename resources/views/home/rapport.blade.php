@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div id="message" class="form-group col-md-12"></div>
-                <div class="col-5" style="margin:auto">
+                <div class="col-lg-4" style="margin:auto">
                     <div class="modal-content">
                         <div class="color-line"></div>
                         <div class="modal-body">
@@ -14,7 +14,7 @@
                                 @csrf
                                 <div class="row">
 
-                                    <div class="form-group col-lg-12 mb-1">
+                                    <div class="form-group col-lg-12">
                                         <label for="example-text-input" class="col-form-label">Operation</label>
                                         <select class="form-control" type="text" name="operation" required>
                                             <option disabled="true" selected="true">--Aucun--</option>
@@ -162,7 +162,7 @@
                 @if (isset($Entrestock))
 
                 <div class="col-12">
-                    <H6>Operation entrer animal.</H6>
+                    <H6>Operation entrer produit.</H6>
                     <div class="card card-primary card-outline">
                         <div class="table-responsive">
 

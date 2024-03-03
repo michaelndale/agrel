@@ -112,7 +112,7 @@ class EntrestockController extends Controller
             }
        
         } catch (Exception $e) {
-            return back()->with('error', $e);
+            return back()->with('error', 'Erreur d\'insertion');
         }
     }
 

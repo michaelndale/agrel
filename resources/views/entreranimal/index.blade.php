@@ -173,6 +173,7 @@
     </div>
 
 
+    
     <div class="modal fade bd-example-modal-lg" id="myModalparcelle" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -194,7 +195,7 @@
                                 <select class="form-control batiment" name="batiment">
                                     <option value=""> Séléctionner le Site</option>
                                     @foreach ($site as $sites)
-                                    <option value="{{ $sites->id }}"> {{ $sites->id }} {{ $sites->libelle }}</option>
+                                    <option value="{{ $sites->id }}"> {{ $sites->libelle }}</option>
                                     @endforeach
                                 </select>
 
@@ -342,6 +343,8 @@
             $(document).on('change', '.espece', function() {
                 var ani = $(this).val();
                 var batiment = $(".batiment").val();
+                var blocid = $(".blocid").val(); 
+                var espece = $(".espece").val(); 
 
                 var div = $(this).parent();
                 var op = " ";
@@ -350,7 +353,9 @@
                     url: "{{ route ('findbox') }}",
                     data: {
                         'id': ani,
-                        'batiment': batiment
+                        'batiment': batiment,
+                        'blocid': blocid,
+                        'espece': espece
                     },
                     success: function(data) {
                         console.log(data);

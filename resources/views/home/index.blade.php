@@ -20,10 +20,10 @@
                   <span class="info-box-number"> {{ number_format( $totalrecette,0, ',', ' ')  }} BIF </span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
+                    <div class="progress-bar" style="width: {{ $pourcentage_recette}}%"></div>
                   </div>
                   <span class="progress-description">
-                    Montant globale des recettes
+                    Montant globale des recettes 
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -41,10 +41,10 @@
                   <span class="info-box-number">{{ number_format( $totaldepense,0, ',', ' ')  }} BIF </span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
+                    <div class="progress-bar" style="width: {{ $pourcentage_depense}}%"></div>
                   </div>
                   <span class="progress-description">
-                    Montant globale des depenses
+                    Montant globale des depenses 
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -71,10 +71,17 @@
                   <span class="info-box-number">{{ number_format( $totalrecette-$totaldepense,0, ',', ' ')  }} BIF</span>
 
                   <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
+
+                  @php
+                   $ballance = $totalrecette-$totaldepense ;
+                   $dballance = $totalrecette+$totaldepense ;
+                   $pb = round($ballance*100)/$dballance ;
+                  @endphp
+
+                    <div class="progress-bar" style="width: {{ $pb }}%"></div>
                   </div>
                   <span class="progress-description">
-                    La difference
+                    La difference 
                   </span>
                 </div>
                 <!-- /.info-box-content -->

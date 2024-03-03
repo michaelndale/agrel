@@ -20,7 +20,7 @@ class EntreranimalController extends Controller
         ->join('especes', 'entreranimals.animalid', '=', 'especes.id')
         ->join('fournisseurs', 'entreranimals.fournisseurid', '=', 'fournisseurs.id')
         ->select('entreranimals.*', 'especes.libelle','fournisseurs.nom')         
-        ->orderBy('id', 'DESC')
+        ->orderBy('id', 'ASC')
         ->get();
 
         $site= site::orderBy('libelle', 'ASC')->get();
@@ -114,7 +114,7 @@ class EntreranimalController extends Controller
             }
        
         } catch (Exception $e) {
-            return back()->with('error', $e);
+            return back()->with('error', 'Erreur d\'insertion');
         }
     }
 
@@ -126,7 +126,9 @@ class EntreranimalController extends Controller
             $check=DB::table('boxes')
             ->where('siteid',$request->batiment)
             ->where('animalid',$request->id)
-            ->orderBy('id', 'DESC')
+            ->where('blocid',$request->blocid)
+            ->where('animalid',$request->espece)
+            ->orderBy('id', 'ASC')
             ->get();
             return response()->json($check);
            
