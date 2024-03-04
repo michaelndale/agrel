@@ -105,7 +105,7 @@
                                                 @endphp
                                                 @empty
                                                 <tr>
-                                                    <td colspan="5">
+                                                    <td colspan="7">
                                                         <center>Ceci est vide</center>
                                                     </td>
                                                 </tr>
@@ -201,7 +201,7 @@
                         @method('post')
                         @csrf
                         <div class="row">
-                        <div class="form-group col-lg-12">
+                        <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Site</label>
                                 <select class="form-control" type="text" name="site" id="site" placeholder="Site" required>
                                     <option value="">Séléctionner le site</option>
@@ -213,7 +213,7 @@
 
                             </div>
 
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Motif du dépense</label>
                                 <select class="form-control" type="text" name="motif" id="motif" placeholder="Motif" required>
                                     <option value="">Séléctionner le motif</option>
@@ -245,7 +245,7 @@
 
                         </div>
                         <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuller</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuller</button>
                     <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
                 </form>

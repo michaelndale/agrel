@@ -84,13 +84,13 @@
                                                     <td>{{ ucfirst($salaires->nom) }} {{ ucfirst($salaires->prenom) }}</td>
                                                     <td class="align:right">{{ number_format($salaires->montant,0, ',', ' ')  }} BIF </td>
                                                     <td>{{ $salaires->mois }}-{{ $salaires->anne }}</td>
-                                                
+
                                                     <td>{{ $salaires->note }} </td>
                                                     <td>{{ date('d-m-Y', strtotime($salaires->date))   }} </td>
                                                     <td>
                                                         <div class="card-footer">
                                                             <div class="row">
-                                                                
+
                                                                 <div class="col-sm">
                                                                     <form action="{{ route('deletesalaire', $salaires->id) }}" method="post">
                                                                         @csrf
@@ -109,7 +109,7 @@
                                                 @endphp
                                                 @empty
                                                 <tr>
-                                                    <td colspan="5">
+                                                    <td colspan="7">
                                                         <center>Ceci est vide</center>
                                                     </td>
                                                 </tr>
@@ -138,7 +138,7 @@
                                                     <th>Montant</th>
                                                     <th>Note</th>
                                                     <th>Date</th>
-                                                    <th >Action</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -156,7 +156,7 @@
 
                                                 @forelse ($salsites AS $salsite)
                                                 <tr>
-                                                <th>{{ $n }}</th>
+                                                    <th>{{ $n }}</th>
                                                     <td>{{ ucfirst($salsite->nom) }} {{ ucfirst($salsite->prenom) }}</td>
                                                     <td class="align:right">{{ number_format($salsite->montant,0, ',', ' ')  }} BIF </td>
                                                     <td>{{ $salsite->mois }}-{{ $salsite->anne }}</td>
@@ -168,7 +168,7 @@
                                                 @endphp
                                                 @empty
                                                 <tr>
-                                                    <td colspan="5">
+                                                    <td colspan="7">
                                                         <center>Ceci est vide</center>
                                                     </td>
                                                 </tr>
@@ -193,20 +193,21 @@
             </div>
         </div>
     </div>
-    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="color-line"></div>
-                <div class="modal-header">
-                    <h4 class="modal-title"> <i class="fa fa-plus-circle"> </i> Nouveau payement </h4>
-                </div>
-                <div class="modal-body">
+    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalScrollableTitle">
+        <form method="POST" action="{{ route('storesalaire') }}">
+            @method('post')
+            @csrf
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="color-line"></div>
+                    <div class="modal-header">
+                        <h4 class="modal-title"> <i class="fa fa-plus-circle"> </i> Nouveau payement </h4>
+                    </div>
+                    <div class="modal-body">
 
-                    <form method="POST" action="{{ route('storesalaire') }}">
-                        @method('post')
-                        @csrf
+
                         <div class="row">
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Site</label>
                                 <select class="form-control" type="text" name="site" id="site" placeholder="Site" required>
                                     <option value="">Séléctionner le site</option>
@@ -218,7 +219,7 @@
 
                             </div>
 
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Personnel</label>
                                 <select class="form-control" type="text" name="persid" id="persid" placeholder="personnel" required>
                                     <option value="">Séléctionner le personnel</option>
@@ -232,7 +233,7 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Mois payé</label>
-                                <select class="form-control" type="text" id="mois"  name="mois"  >
+                                <select class="form-control" type="text" id="mois" name="mois">
                                     <option selected>Janvier</option>
                                     <option>Février</option>
                                     <option>Mars</option>
@@ -245,13 +246,13 @@
                                     <option>Octobre</option>
                                     <option>Novembre</option>
                                     <option>Décembre</option>
-                            </select>
+                                </select>
 
                             </div>
 
                             <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Annee </label>
-                                <input class="form-control" type="number" id="anne"  name="anne" value="{{ date('Y')}}" >
+                                <input class="form-control" type="number" id="anne" name="anne" value="{{ date('Y')}}">
 
                             </div>
 
@@ -263,7 +264,7 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Montant payer</label>
-                                <input class="form-control" type="number" id="montant"  name="montant" placeholder="Montant">
+                                <input class="form-control" type="number" id="montant" name="montant" placeholder="Montant">
 
                             </div>
 
@@ -273,16 +274,18 @@
 
                             </div>
 
+
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuller</button>
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuller</button>
+                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
 
 
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    @endsection
+</div>
+@endsection

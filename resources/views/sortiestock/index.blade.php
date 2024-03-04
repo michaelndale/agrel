@@ -209,8 +209,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalScrollableTitle">
+    <form method="POST" action="{{ route('storesortiestock') }}">
+                        @method('post')
+                        @csrf
+    <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="color-line"></div>
                 <div class="modal-header">
@@ -218,9 +221,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form method="POST" action="{{ route('storesortiestock') }}">
-                        @method('post')
-                        @csrf
+                  
                         <div class="row">
                             <div class="form-group col-lg-12">
                                 <label for="example-text-input" class="col-form-label">Site</label>
@@ -260,7 +261,7 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Client</label>
-                                <input class="form-control" type="text" name="client" id="client" placeholder="Client">
+                                <input class="form-control" type="text" name="client" id="client" placeholder="Client" >
 
 
                             </div>
@@ -289,15 +290,18 @@
                             </div>
 
                         </div>
+                      
+                        </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuller</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuller</button>
                             <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
                         </div>
-                    </form>
+                
 
 
-                </div>
+               
             </div>
         </div>
+        </form>
     </div>
     @endsection

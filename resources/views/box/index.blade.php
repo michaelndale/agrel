@@ -135,7 +135,7 @@
 
                             <div class="form-group col-lg-12 mb-1">
                                 <label class="col-form-label">Séléctionner le site </label>
-                                <select class="form-control batiment" name="batiment" id="batiment">
+                                <select class="form-control batiment" name="batiment" id="batiment" required>
                                     <option value=""> Séléctionner le Site</option>
                                     @foreach ($siteData as $siteDatas)
                                     <option value="{{ $siteDatas->id }}">  {{ $siteDatas->libelle }}</option>
@@ -147,7 +147,7 @@
                             <div class="form-group col-lg-12 mb-1" id="poll">
 
                                 <label class="col-form-label">Séléctionner bloc </label>
-                                <select class="form-control blocid" name="blocid" id="blocid" data-live-search="true">
+                                <select class="form-control blocid" name="blocid" id="blocid" data-live-search="true" required>
                                     <option disabled="true" selected="true" value="">Séléctionner bloc</option>
 
                                 </select>
@@ -158,7 +158,7 @@
                               
 
                                 <label class="col-form-label">Spece Animal </label>
-                                <select class="form-control spece" name="spece" id="spece">
+                                <select class="form-control spece" name="spece" id="spece" required>
                                     <option value=""> Séléctionner le Site</option>
                                     @foreach ($spece as $speces)
                                     <option value="{{ $speces->id }}">{{ $speces->libelle }}</option>
@@ -170,7 +170,7 @@
 
                             <div class="col-md-12 mb-1">
                                 <label for="example-text-input" class="col-form-label">Libellé box</label>
-                                <input class="form-control" type="text" id="libelle" name="libelle" placeholder="Libellé box">
+                                <input class="form-control" type="text" id="libelle" name="libelle" placeholder="Libellé box" required>
 
                             </div>
 

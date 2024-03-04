@@ -110,13 +110,13 @@
                                 <span id="name_error" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Email</label>
                                 <input class="form-control" type="text" name="email" id="email" placeholder="Email" required>
                                 <span id="name_error" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Mot de passe</label>
                                 <input class="form-control" type="text" name="password" id="password" placeholder="*************" required>
                                 <span id="name_error" class="text-danger"></span>

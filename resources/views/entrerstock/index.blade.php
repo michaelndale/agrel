@@ -14,7 +14,7 @@
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-        
+
             <div class="row">
                 <div id="message" class="form-group col-md-12"></div>
 
@@ -75,7 +75,7 @@
                                             </thead>
                                             <tbody>
                                                 @php
-                                                    $n=1;
+                                                $n=1;
                                                 @endphp
                                                 @forelse ($Entrestock as $Entrestocks)
                                                 <tr>
@@ -86,7 +86,7 @@
                                                     <td>{{ ucfirst($Entrestocks->nom) }}</td>
                                                     <td>{{ ucfirst($Entrestocks->note) }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($Entrestocks->date))   }} </td>
-                                                  <!--  <td>
+                                                    <!--  <td>
                                                     <div class="card-footer">
                                         <div class="row">
                                             <div class="col-sm">
@@ -104,10 +104,10 @@
                                         </div>
                                        -->
                                                     </td>
-                                                   
+
                                                 </tr>
                                                 @php
-                                                    $n++;
+                                                $n++;
                                                 @endphp
                                                 @empty
                                                 <tr>
@@ -135,34 +135,34 @@
                                         <table class="table table-striped table-bordered table-hover" id="myTable">
                                             <thead>
                                                 <tr>
-                                                <th>ID</th>
+                                                    <th>ID</th>
                                                     <th>Motif</th>
                                                     <th>Statut</th>
                                                     <th>Quantite</th>
                                                     <th>Fournisseur</th>
                                                     <th>Note</th>
                                                     <th>Date E.S</th>
-                                                 
+
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                                 @php
                                                 $ndale=1;
-                                                    $idsite= $sites->id;
-                                                    $stoc= DB::table('entrestocks')
-                                                    ->join('motifstocks', 'entrestocks.motifid', '=', 'motifstocks.id')
-                                                    ->join('fournisseurs', 'entrestocks.fournisseurid', '=', 'fournisseurs.id')
-                                                    ->select('entrestocks.*', 'motifstocks.libelle','motifstocks.unitemesure','fournisseurs.nom')         
-                                                    ->where('site',$idsite)
-                                                    ->orderBy('id', 'DESC')
-                                                    ->get();
-                                                    
+                                                $idsite= $sites->id;
+                                                $stoc= DB::table('entrestocks')
+                                                ->join('motifstocks', 'entrestocks.motifid', '=', 'motifstocks.id')
+                                                ->join('fournisseurs', 'entrestocks.fournisseurid', '=', 'fournisseurs.id')
+                                                ->select('entrestocks.*', 'motifstocks.libelle','motifstocks.unitemesure','fournisseurs.nom')
+                                                ->where('site',$idsite)
+                                                ->orderBy('id', 'DESC')
+                                                ->get();
+
                                                 @endphp
 
                                                 @forelse ($stoc AS $stocs)
                                                 <tr>
-                                                     <th>{{ $ndale }}</th>
+                                                    <th>{{ $ndale }}</th>
                                                     <td>{{ $stocs->libelle }}</td>
                                                     <td>{{ $stocs->statutid }}</td>
                                                     <td class="align:right">{{ number_format($stocs->quantite,0, ',', ' ')  }} {{ $stocs->unitemesure }}</td>
@@ -171,7 +171,7 @@
                                                     <td>{{ date('d-m-Y', strtotime($stocs->date))   }} </td>
                                                 </tr>
                                                 @php
-                                                    $ndale++;
+                                                $ndale++;
                                                 @endphp
                                                 @empty
                                                 <tr>
@@ -208,8 +208,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="myModal7" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalScrollableTitle">
+    <form method="POST" action="{{ route('storestock') }}">
+                        @method('post')
+                        @csrf 
+    <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="color-line"></div>
                 <div class="modal-header">
@@ -217,18 +220,16 @@
                 </div>
                 <div class="modal-body">
 
-                <form method="POST" action="{{ route('storestock') }}">
-                        @method('post')
-                        @csrf
+                    
                         <div class="row">
-                        <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Site</label>
                                 <select class="form-control" type="text" name="site" id="site" placeholder="Site" required>
                                     <option value="">Séléctionner le site</option>
                                     @foreach ($site as $sites)
                                     <option value="{{ $sites->id }}">{{ $sites->libelle }}</option>
                                     @endforeach
-                                    
+
                                 </select>
 
                             </div>
@@ -240,7 +241,7 @@
                                     @foreach ($motifstock as $motifs)
                                     <option value="{{ $motifs->id }}">{{ $motifs->libelle }}</option>
                                     @endforeach
-                                    
+
                                 </select>
 
                             </div>
@@ -252,19 +253,19 @@
                                     @foreach ($statut as $statuts)
                                     <option value="{{ $statuts->libelle }}">{{ $statuts->libelle }}</option>
                                     @endforeach
-                                    
+
                                 </select>
 
                             </div>
 
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <label for="example-text-input" class="col-form-label">Fournisseur</label>
                                 <select class="form-control" type="text" name="fournisseur" id="fournisseur" placeholder="Site" required>
                                     <option value="">Séléctionner le fournisseur</option>
                                     @foreach ($fournisseur as $fournisseurs)
                                     <option value="{{ $fournisseurs->id }}">{{ ucfirst($fournisseurs->nom) }}</option>
                                     @endforeach
-                                    
+
                                 </select>
 
                             </div>
@@ -283,20 +284,20 @@
 
                             <div class="form-group col-lg-12">
                                 <label for="example-text-input" class="col-form-label">Note</label>
-                                <textarea class="form-control" type="text"  name="note" id="note" placeholder="note"></textarea>
+                                <textarea class="form-control" type="text" name="note" id="note" placeholder="note"></textarea>
 
                             </div>
-
-                        </div>
-                        <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuller</button>
-                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
+                    
                 </div>
-                </form>
-                    
-                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuller</button>
+                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
             </div>
         </div>
+        </form>
     </div>
-    @endsection
+   
+</div>
+@endsection

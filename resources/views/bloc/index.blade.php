@@ -159,7 +159,7 @@
                     <small class="font-bold"> Toutes les champs sont obligateur.</small> <br>
                             
                             <label class="col-form-label">Séléctionner le site </label>
-                            <select class="form-control"  id="site_id" name="site_id" >
+                            <select class="form-control"  id="site_id" name="site_id" required >
                                 <option value="">Séléctionner le Site</option>
                                 @foreach ($siteData as $siteDatas)
                                     <option value="{{  $siteDatas->id }}">{{  $siteDatas->libelle }}</option>
@@ -172,14 +172,14 @@
                
                         <div class="col-md-12 mb-3">
                             <label for="example-text-input" class="col-form-label">Libellé bloc</label>
-                            <input class="form-control" type="text" id="name_bloc"  name="name_bloc" placeholder="Libellé bloc">
+                            <input class="form-control" type="text" id="name_bloc"  name="name_bloc" placeholder="Libellé bloc" required>
                             
                         </div> 
 
                         <div class="col-md-12 mb-3">
                             <br>
                             <label for="example-text-input" class="col-form-label">Superficie du bloc</label>
-                            <input class="form-control" type="text" id="superficie_bloc"  name="superficie_bloc" placeholder="Supeficie du bloc">
+                            <input class="form-control" type="text" id="superficie_bloc"  name="superficie_bloc" placeholder="Supeficie du bloc" required>
                          
                         </div> 
                     </div>  
@@ -216,7 +216,7 @@
               <small class="font-bold"> Toutes les champs sont obligateur.</small> <br>
                       
                       <label class="col-form-label">Séléctionner le site </label>
-                      <select class="form-control batiment"  name="batiment" >
+                      <select class="form-control batiment"  name="batiment"  required>
                           <option value=""> Séléctionner le Site</option>
                           @foreach ($siteData as $siteDatas)
                                     <option value="{{ $siteDatas->id }}"> {{  $siteDatas->id }} {{  $siteDatas->libelle }}</option>
@@ -228,7 +228,7 @@
                   <div class="form-group col-lg-12" id="poll">
                       
                       <label class="col-form-label">Séléctionner bloc </label>
-                      <select class="form-control blocid"  name="blocid" id="blocid" data-live-search="true" >
+                      <select class="form-control blocid"  name="blocid" id="blocid" data-live-search="true" required >
                           <option disabled="true" selected="true"value="">Séléctionner bloc</option>
                         
                       </select>
@@ -237,13 +237,13 @@
          
                   <div class="col-md-12 mb-3">
                       <label for="example-text-input" class="col-form-label">Parcelle</label>
-                      <input class="form-control" type="text" id="libelle"  name="libelle" placeholder="Libellé parcelle">
+                      <input class="form-control" type="text" id="libelle"  name="libelle" placeholder="Libellé parcelle" required>
                     
                   </div> 
 
                   <div class="col-md-12 mb-3">
                       <label for="example-text-input" class="col-form-label">Superficie parcelle</label>
-                      <input class="form-control" type="text" id="superficie"  name="superficie" placeholder="Supeficie du parcelle">
+                      <input class="form-control" type="text" id="superficie"  name="superficie" placeholder="Supeficie du parcelle" required>
                     
                   </div> 
               </div>  

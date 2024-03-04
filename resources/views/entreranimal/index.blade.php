@@ -174,26 +174,30 @@
 
 
     
-    <div class="modal fade bd-example-modal-lg" id="myModalparcelle" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="color-line"></div>
-                <form method="POST" id="forme_parcelle" action="{{ route('storeanimal') }}">
+    <div class="modal fade bd-example-modal-lg" id="myModalparcelle" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalScrollableTitle">
+      
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <form method="POST" id="forme_parcelle" action="{{ route('storeanimal') }}">
                     @method('post')
                     @csrf
+            <div class="modal-content">
+                <div class="color-line"></div>
+                
                     <div class="modal-header">
                         <h4 class="modal-title"> <i class="fa fa-plus-circle"> </i> Nouvelle</h4>
 
                     </div>
                     <div class="modal-body">
 
+                  
+
                         <div class="row">
 
                             <div class="form-group col-lg-6 mb-1">
 
-                                <label class="col-form-label">Séléctionner le site </label>
-                                <select class="form-control batiment" name="batiment">
-                                    <option value=""> Séléctionner le Site</option>
+                                <label class="col-form-label">Site </label>
+                                <select class="form-control batiment" name="batiment" required>
+                                    <option value="">Site</option>
                                     @foreach ($site as $sites)
                                     <option value="{{ $sites->id }}"> {{ $sites->libelle }}</option>
                                     @endforeach
@@ -202,17 +206,17 @@
                             </div>
 
                             <div class="form-group col-lg-6 mb-1" id="poll">
-                                <label class="col-form-label">Séléctionner bloc </label>
-                                <select class="form-control blocid" name="blocid" id="blocid" data-live-search="true">
-                                    <option disabled="true" selected="true" value="">Séléctionner bloc</option>
+                                <label class="col-form-label">Bloc </label>
+                                <select class="form-control blocid" name="blocid" id="blocid" data-live-search="true" required>
+                                    <option disabled="true" selected="true" value="">Bloc</option>
                                 </select>
                             </div>
 
 
                             <div class="form-group col-lg-6 mb-1">
-                                <label class="col-form-label">Séléctionner animal </label>
-                                <select class="form-control espece" name="espece">
-                                    <option value=""> Séléctionner espece</option>
+                                <label class="col-form-label">Espece</label>
+                                <select class="form-control espece" name="espece" required>
+                                    <option value=""> Espece</option>
                                     @foreach ($espece as $especes)
                                     <option value="{{ $especes->id }}"> {{ $especes->libelle }}</option>
                                     @endforeach
@@ -220,9 +224,9 @@
                             </div>
 
                             <div class="form-group col-lg-6 mb-1" id="pollbox">
-                                <label class="col-form-label">Séléctionner box </label>
-                                <select class="form-control boxid" name="boxid" id="boxid" data-live-search="true">
-                                    <option disabled="true" selected="true" value="">Séléctionner box</option>
+                                <label class="col-form-label">Box </label>
+                                <select class="form-control boxid" name="boxid" id="boxid" data-live-search="true" required>
+                                    <option disabled="true" selected="true" value="">Box</option>
                                 </select>
                             </div>
 
@@ -234,9 +238,9 @@
 
 
                             <div class="form-group col-lg-6 mb-1">
-                                <label class="col-form-label">Séléctionner statut </label>
-                                <select class="form-control" name="statut">
-                                    <option value=""> Séléctionner statut</option>
+                                <label class="col-form-label">Statut </label>
+                                <select class="form-control" name="statut" required>
+                                    <option value=""> Statut</option>
                                     @foreach ($statut as $statuts)
                                     <option value="{{ $statuts->libelle }}"> {{ $statuts->libelle }}</option>
                                     @endforeach
@@ -245,7 +249,7 @@
 
                             <div class="form-group col-lg-6 mb-1">
                                 <label class="col-form-label">Séléctionner sexe </label>
-                                <select class="form-control sexe" name="sexe">
+                                <select class="form-control sexe" name="sexe" required>
                                     <option value="">Aucun</option>
                                     <option value="Mâle">Mâle</option>
                                     <option value="Femelle">Femelle</option>
@@ -284,17 +288,18 @@
                             </div>
 
 
-
+                          
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuller</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuller</button>
                         <button type="submit" id="envoie" name="envoie" class="btn btn-primary">Enregistrer</button>
                     </div>
-                </form>
+                
             </div>
 
-        </div>
+            </form>      
+          </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
